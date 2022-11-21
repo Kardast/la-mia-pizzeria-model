@@ -22,22 +22,25 @@ else
         <tbody>
             @foreach (Pizza pizza in Model)
             {
-                <tr>
-                    <td><a href="@Url.Action("Details",new {id = pizza.Id})">@pizza.Id</a></td>
-                    <td class="title">@pizza.Name</td>
-                    <td class="description">
-                        @pizza.Description
-                    </td>
-                    <td class="image">
-                        <img class="post-list-image" src="@pizza.Image" alt="mmm pizza" width="900" height="400">
-                    </td>
-                    <td class="price">
-                        @pizza.Cost €
-                    </td>
-                    <td>
-                        <a href="@Url.Action("Details",new {id = pizza.Id})"><button type="button" class="btn btn-info"> Dettagli Pizza </button></a>
-                    </td>
-                </tr>
+                @if(pizza.Available == true)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Details",new {id = pizza.Id})">@pizza.Id</a></td>
+                        <td class="title">@pizza.Name</td>
+                        <td class="description">
+                            @pizza.Description
+                        </td>
+                        <td class="image">
+                            <img class="post-list-image" src="@pizza.Image" alt="mmm pizza" width="900" height="400">
+                        </td>
+                        <td class="price">
+                            @pizza.Cost €
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details",new {id = pizza.Id})"><button type="button" class="btn btn-info"> Dettagli Pizza </button></a>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

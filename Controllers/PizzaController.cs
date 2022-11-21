@@ -7,10 +7,14 @@ namespace la_mia_pizzeria_static.Controllers
 {
     public class PizzaController : Controller
     {
+        PizzeriaDbContext db;
+
+        public PizzaController() : base()
+        {
+            db = new PizzeriaDbContext();
+        }
         public IActionResult Index()
         {
-            PizzeriaDbContext db = new PizzeriaDbContext();
-
             List<Pizza> listPizza = db.Pizzas.ToList();
 
             //qualche altra cosa...
@@ -20,8 +24,6 @@ namespace la_mia_pizzeria_static.Controllers
 
         public IActionResult Details(int id)
         {
-
-            PizzeriaDbContext db = new PizzeriaDbContext();
 
             Pizza pizza = db.Pizzas.Where(p => p.Id == id).FirstOrDefault();
 
